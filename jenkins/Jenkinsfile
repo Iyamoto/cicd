@@ -1,10 +1,16 @@
 pipeline {
     agent any
+	
+	environment {
+		TEST_ACCESS = credentials('test-domain')
+	}
+	
     stages {
         stage('Deploy') {
             steps {
                 git 'https://github.com/Iyamoto/RND.git'
                 sh '''
+					echo $TEST_ACCESS
                     ls -la
                     python --version
                 '''
