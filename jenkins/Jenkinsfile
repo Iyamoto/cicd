@@ -2,7 +2,7 @@ pipeline {
     agent any
 	
 	environment {
-		TEST_ACCESS = credentials('test-domain')
+		TEST_ACCESS = credentials('my-secret')
 	}
 	
     stages {
