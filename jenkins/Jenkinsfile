@@ -10,7 +10,7 @@ pipeline {
             steps {
                 git 'https://github.com/Iyamoto/RND.git'
                 sh '''
-					echo $TEST_ACCESS
+					echo "$TEST_ACCESS"
                     ls -la
                     python --version
                 '''
