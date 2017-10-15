@@ -1,0 +1,3 @@
+hosts: [
+  { host_ip: "10.100.199.200", host_name: "cicd"},
+]
