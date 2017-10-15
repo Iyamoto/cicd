@@ -2,10 +2,11 @@
 - name: Container is running
   docker:
     name: jenkins
-    image: "jenkins"
-    ports: "49001:8080"
+    image: "jenkins:lts-alpine"
+    ports: 
+    - "49001:8080"
+    - "50000:50000"
     state: started
     volumes:
-      - /data/jenkins:/var/jenkins_home
-      - /vagrant/.vagrant/machines:/machines
+      - jenkins_home:/var/jenkins_home
   tags: [jenkins]

@@ -15,7 +15,7 @@
     state: running
   tags: [docker]
   
-- name: Docker-PY
+- name: Install Docker-PY
   pip:
     name: "{{ item }}"
   with_items:
@@ -31,7 +31,5 @@
   when: vagrant_exist  
   
 - name: Set owner for docker.sock
-  file:
-    dest: /var/run/docker.sock
-    owner: root
-    group: dockerroot 
+  command: chown root:dockerroot /var/run/docker.sock
+  when: vagrant_exist  
