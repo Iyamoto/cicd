@@ -1,6 +1,7 @@
+---
 - name: CentOS package is installed
   yum:
-    name: docker-engine
+    name: docker
     state: present
   tags: [docker]
 
@@ -13,3 +14,24 @@
     name: docker
     state: running
   tags: [docker]
+  
+- name: Docker-PY
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - six
+    - docker-py 
+
+- name: Check for vagrant user
+  shell: id vagrant
+  register: vagrant_exist	
+  
+- name: Add vagrant user to docker group
+  command: gpasswd -a vagrant dockerroot
+  when: vagrant_exist  
+  
+- name: Set owner for docker.sock
+  file:
+    dest: /var/run/docker.sock
+    owner: root
+    group: dockerroot 

@@ -1,9 +1,22 @@
+---
 - name: JQ is present
   yum:
     name: jq
-    state: latest
+    state: present
   tags: [common]
+  
+- name: Git is present
+  yum:
+    name: git
+    state: present
+  tags: [common]	
 
+- name: Pip is present
+  yum:
+    name: python2-pip
+    state: present
+  tags: [common]  
+  
 - name: Host is present
   lineinfile:
     dest: /etc/hosts
